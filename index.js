@@ -39,7 +39,7 @@ app.use(taskRoutes);
 app.get('/', (_, res) => {
   return res.status(200).json({
     status: 'success',
-    body: { message: 'Welcome to the Trello app 🥳' },
+    body: { message: 'Welcome to the To Do API 🥳' },
   });
 });
 
@@ -49,4 +49,6 @@ app.all('*', (_, res) => {
     .json({ status: 'error', message: 'Content not found' });
 });
 
-app.listen(process.env.PORT || 443);
+console.log(process.env.PORT)
+
+app.listen(process.env.PORT || 5000);
