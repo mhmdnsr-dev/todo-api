@@ -26,10 +26,10 @@ const add = async (req, res) => {
           description: task.description,
           status: task.status,
           deadline: task.deadline,
-          // assignFrom: {
-          //   name: user.name,
-          //   email: user.email,
-          // },
+          assignFrom: {
+            name: user.name,
+            email: user.email,
+          },
           assignTo: {
             name: to?.name || user.name,
             email: to?.email || user.email,
@@ -87,10 +87,10 @@ const update = async (req, res) => {
       body: {
         task: {
           ...taskData,
-          // assignFrom: {
-          //   name: ownerTask.name,
-          //   email: ownerTask.email,
-          // },
+          assignFrom: {
+            name: ownerTask.name,
+            email: ownerTask.email,
+          },
           assignTo: {
             name: to?.name || actualAssign.name,
             email: to?.email || actualAssign.email,
@@ -180,7 +180,7 @@ const all = async (req, res) => {
     if (!tasks.length)
       return res
         .status(204)
-        .json({ status: 'fail', body: 'Not found any task' });
+        .json({ status: 'fail', body: { message: 'Not found any task' } });
     else return res.status(200).json({ status: 'success', body: { tasks } });
   } catch (err) {
     return res.status(500).json({ status: 'error', message: err.message });

@@ -238,7 +238,6 @@ const _delete = async (req, res) => {
 // 5) soft delete
 const softDelete = async (req, res) => {
   try {
-    //const { authorization } = req.headers;
     const { decodedToken } = req;
 
     res.clearCookie('token', {
